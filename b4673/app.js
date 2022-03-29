@@ -1,32 +1,31 @@
-const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-let input = require("fs").readFileSync(filePath).toString().split("\n");
+// const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+// let input = require("fs").readFileSync(filePath).toString().split("\n");
 // let input = require('fs').readFileSync('/dev/stdin').toString().split("\n");
 // let input = Number(require('fs').readFileSync('/dev/stdin').toString());
 
-const value = [];
-for(i=1; i<=input[0]; i++) {
-    value.push(input[i].split(" ").map(item => +item));
-};
 
 
-function solution(C) {
-    let arr = [];
-    for(i=0; i < C; i++) {
-        arr = value[i];
-        arr.splice(0, 1);
-        let average = arr.reduce((acc, cur) => acc + cur, 0);
-        average /= arr.length;
-        let percent = 0;
-        for(j=0; j < arr.length; j++) {
-            if(arr[j] > average) {
-                percent++;
-            }
+function solution() {
+    const arr = [];
+    let start = 0;
+    for(j=1; j<10000; j++) {
+        let x = 1;
+        let sumValues = [];
+        for(i = 0; i < 4; i++) {
+            let y = j % (10 * x);
+            let value = Math.floor(y / (1 * x));
+            sumValues.push(value);
+            x *= 10;
         }
-        percent = 100 / arr.length * percent;
-        console.log(percent.toFixed(3) + "%");
+        arr.push(sumValues.reduce((acc, cur) => acc + cur, j));
+    }
+    console.log(arr);
+    for(i=1; i<10000; i++) {
+        if(arr.indexOf(i) === -1) {
+            console.log(i);
+        }
     }
 }
 
-solution(input[0]);
 
-
+            solution();

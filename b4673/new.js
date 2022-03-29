@@ -1,19 +1,12 @@
-const { arrayBuffer } = require("stream/consumers");
+function makeSumValue(n) {
+    let x = 1;
+    let sumValues = [];
 
-
-
-
-const input = [9, 100, 99, 98, 97, 96, 95, 94, 93, 91];
-
-
-
-for(i=1; i<input.length; i++) {
-
+        let y = n % (10 * x);
+        let value = Math.floor(y / (1 * x));
+        sumValues.push(value);
+    console.log(sumValues);
+    return sumValues.reduce((acc, cur) => acc + cur, n);
 }
 
-input.sp
-let sum = input.reduce((acc, cur) => acc + cur, 0);
-
-console.log(sum)
-
-
+console.log(makeSumValue(3))

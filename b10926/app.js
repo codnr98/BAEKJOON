@@ -4,5 +4,8 @@ let input = fs.readFileSync(filePath).toString().split("\n");
 input = input[0];
 input = input.split(" ");
 
+function solution(input) {
+  console.log(`${input}??!`);
+}
 
-console.log(input[0]+"??!");
+solution(input);

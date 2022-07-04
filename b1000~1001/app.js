@@ -1,18 +1,14 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-let input = fs.readFileSync(filePath).toString().split("\n");// 줄바꿈으로 array를 나눔
+let input = fs.readFileSync(filePath).toString().split("\n"); // 줄바꿈으로 array를 나눔
 input = input[0];
-input = input.split(" ");
+input = input.split(" ").map((item) => +item);
+// .map()은 해당배열 안의 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환한다.
 
-const inputs = [];// number type으로 변환된 값이 들어갈 array
-
-for(i = 0; i < input.length; i++) { //input array의 length만큼 반복
-    const result = parseInt(input[i]); //result에 parseInt로 input array의 item들을 받아와 number type으로 변환해서 넣어줌
-    inputs.push(result); // 변환한 값들을 미리준비한 inputs array에 넣어줌
+function solution(input) {
+  let sum = 0;
+  let = input[0] - input[1];
+  console.log(let);
 }
 
-function solution(A, B) {
-    console.log(A + B);
-};
-
-solution(inputs[0], inputs[1]);
+solution(input);

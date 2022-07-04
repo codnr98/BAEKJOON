@@ -1,28 +1,18 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-let input = fs.readFileSync(filePath).toString().split("\n");
+let input = fs
+  .readFileSync(filePath)
+  .toString()
+  .split("\n")
+  .map((x) => +x);
 
-
-const numInput = [];
-
-for(i = 0; i < input.length; i++) {
-    numInput.push(parseInt(input[i]));
+function solution(input) {
+  const A = input[0];
+  const B = input[1].toString();
+  const decomposeB = B.split("").map((x) => +x);
+  console.log(A * decomposeB[2]);
+  console.log(A * decomposeB[1]);
+  console.log(A * decomposeB[0]);
+  console.log(A * B);
 }
-
-
-
-function solution(A, B) {
-    const oneNum = B % 10;
-    const tenNum = Math.floor((B % 100)/10);
-    const hundredNum = Math.floor(B / 100);
-
-    console.log(A * oneNum);
-    console.log(A * tenNum);
-    console.log(A * hundredNum);
-    console.log(A * B);
-}
-
-solution(numInput[0], numInput[1]);
-
-
-
+solution(input);

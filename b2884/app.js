@@ -2,25 +2,16 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 let input = fs.readFileSync(filePath).toString().split("\n");
 input = input[0];
-input = input.split(" ");
+input = input.split(" ").map((x) => +x);
 
-const numInput = [];
-for(i = 0; i < input.length; i++) {
-    numInput.push(parseInt(input[i]));
+function solution(input) {
+  let H = input[0];
+  let M = input[1];
+  M -= 45;
+  if (M < 0) {
+    M += 60;
+    H === 0 ? (H = 23) : (H -= 1);
+  }
+  console.log(H, M);
 }
-
-function solution(h, m) {
-    m -= 45;
-    if(m < 0) {
-        m += 60;
-        h -= 1;
-    }
-    if(h < 0) {
-        h += 24;
-    } 
-    console.log(h, m);
-}
-
-solution(numInput[0], numInput[1])
-
-
+solution(input);
